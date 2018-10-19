@@ -1,0 +1,42 @@
+<h1>Single Pet : {{petid}}</h1>
+<p *ngIf="pet.message">
+  Sorry this pet does not exist, please choose another one!
+  <button [routerLink]="['/pets']" > Redirect to pets</button>
+</p>
+
+<div *ngIf="(!pet.message)">
+  <h5> Details about {{pet.name}}</h5>
+
+
+<table>
+  <tbody>
+    <tr>
+        <td> <h5>Pet Type:</h5> </td>
+        <td> {{pet.type}} </td>
+    </tr>
+    <tr>
+        <td> <h5>Pet Description:</h5> </td>
+        <td> {{pet.description}} </td>
+    </tr>
+    <tr>
+        <td> <h5>Skills:</h5> </td>
+        <td> 
+            <p *ngIf="pet.skillone">{{pet.skillone}}</p>  
+            <p *ngIf="pet.skilltwo">{{pet.skilltwo}}</p>  
+            <p *ngIf="pet.skillthree">{{pet.skillthree}}</p>  
+        </td>
+    </tr>
+    <tr>
+        <td> <h5>Likes</h5> </td>
+        <td> {{pet.votes}} </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+    <button *ngIf="!voted" (click)="vote()"> Like this pet?? WHY</button>
+    <button style="margin-left:50px" (click)="deletePet()"> Adopt this pet!!! </button>
+
+</p>
+
+</div>

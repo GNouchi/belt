@@ -1,0 +1,38 @@
+<h1>Edit {{pet.name}}</h1>
+
+<p>
+  helper: {{pet|json}}
+</p>
+
+
+<div class="maincontainer">
+    <!-- <p *ngIf="name['errors']"> Name Required </p>
+    <p *ngIf="type['errors']"> Type Error: {{type}} </p>
+    <p *ngIf="description['errors']"> description: {{description}} </p> -->
+
+  <p *ngIf="errors" >{{errors.message|json}}</p> 
+
+<p>
+  <input type="text" name="name" [(ngModel)]="pet.name" 
+  placeholder=" What's this pet's name?" minlength="3" required #name="ngModel"  >
+</p>
+<p>
+  <input type="text" name="type" [(ngModel)]="pet.type" 
+  placeholder=" What kind of pet?"  minlength="3" #type="ngModel"  >
+</p>
+<p>
+  <input type="text" name="description" [(ngModel)]="pet.description" 
+  placeholder=" Tell me about this pet" minlength="3" #description="ngModel" >
+</p>
+
+<h6> Any Skills? </h6>
+<p><input type="text" name="skillone" placeholder=" First Skill" [(ngModel)]="pet.skillone"></p>
+<p><input type="text" name="skilltwo" placeholder=" Second Skill" [(ngModel)]="pet.skilltwo"></p>
+<p><input type="text" name="skillthree" placeholder=" Thrid Skill" [(ngModel)]="pet.skillthree"></p>
+
+<p>
+    <button class="wipe" *ngIf="name.valid&&type.valid&&description.valid" 
+    (click)="editPet()"> Send Edit! </button>
+    <button class="wipe"(click)="toSinglePet()" style="margin-left:20px">Cancel</button>    
+</p>
+</div>
